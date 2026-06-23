@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lisbon + Barcelona · Jun 29 – Jul 7</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#ffffff;
+  --bg2:#f5f5f0;
+  --border:#e2e0d8;
+  --border2:#d0cdc4;
+  --text:#1a1a18;
+  --text2:#6b6b65;
+  --text3:#9b9b94;
+  --radius:12px;
+  --radius-sm:8px;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'SF Mono','Fira Code',monospace;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1c1c1a;
+    --bg2:#252522;
+    --border:#333330;
+    --border2:#444440;
+    --text:#f0ede6;
+    --text2:#a0a09a;
+    --text3:#6b6b65;
+  }
+}
+body{font-family:var(--font);color:var(--text);background:var(--bg);max-width:480px;margin:0 auto;padding:20px 16px 48px;}
+.header{margin-bottom:14px;}
+.header-title{font-size:18px;font-weight:600;letter-spacing:-.01em;}
+.header-sub{font-size:13px;color:var(--text3);margin-top:2px;}
+
+/* Next up bar */
+.nextup{display:flex;align-items:stretch;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+.nextup-bar{width:3px;flex-shrink:0;}
+.nextup-inner{flex:1;padding:9px 12px;display:flex;align-items:center;gap:10px;min-width:0;}
+.nextup-col{flex:1;min-width:0;}
+.nextup-label{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:2px;display:flex;align-items:center;gap:4px;}
+.nextup-title{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nextup-sub{font-size:11px;color:var(--text2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nvdiv{width:0.5px;background:var(--border);align-self:stretch;flex-shrink:0;margin:6px 0;}
+.nextup-countdown{font-size:20px;font-weight:600;line-height:1;text-align:center;color:var(--text);}
+.nextup-countdown-label{font-size:10px;color:var(--text3);text-align:center;margin-top:1px;}
+
+/* Tabs */
+.tabs{display:flex;gap:6px;margin-bottom:18px;}
+.tab{padding:7px 14px;font-size:13px;border-radius:var(--radius-sm);border:0.5px solid var(--border);background:transparent;cursor:pointer;color:var(--text2);display:inline-flex;align-items:center;gap:6px;font-family:var(--font);}
+.tab.active{background:var(--bg2);color:var(--text);border-color:var(--border2);}
+
+/* Section */
+.slabel{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:7px;}
+.sec{margin-bottom:20px;}
+
+/* Cards */
+.card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.card+.card{margin-top:8px;}
+.card-pad{padding:12px 14px;}
+.divider{border:none;border-top:0.5px solid var(--border);}
+
+/* Stripe rows */
+.stripe{display:flex;align-items:stretch;}
+.sbar{width:3px;flex-shrink:0;}
+.scontent{flex:1;padding:10px 14px;min-width:0;}
+.crow{display:flex;align-items:center;gap:10px;}
+.cicon{font-size:17px;color:var(--text3);flex-shrink:0;width:20px;text-align:center;}
+.cbody{flex:1;min-width:0;}
+.ctitle{font-size:13px;font-weight:500;}
+.csub{font-size:12px;color:var(--text2);margin-top:2px;line-height:1.4;}
+.cmeta{font-size:11px;color:var(--text3);text-align:right;flex-shrink:0;font-family:var(--mono);}
+
+/* Links */
+.action-row{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap;}
+a.act{color:#185FA5;font-size:12px;text-decoration:none;display:inline-flex;align-items:center;gap:3px;}
+a.act:hover{text-decoration:underline;}
+
+/* Placeholder */
+.ph-card{background:var(--bg2);border:0.5px dashed var(--border2);border-radius:var(--radius);overflow:hidden;margin-bottom:8px;}
+
+/* Info rows */
+.irow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px;}
+.irow+.irow{border-top:0.5px solid var(--border);}
+.ikey{color:var(--text2);font-size:12px;}
+.ival{font-family:var(--mono);font-size:12px;}
+
+/* Emergency rows */
+.erow{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:13px;}
+.erow+.erow{border-top:0.5px solid var(--border);}
+.ekey{color:var(--text2);font-size:12px;display:flex;align-items:center;gap:6px;}
+.eval{font-size:12px;}
+a.eval{color:#185FA5;text-decoration:none;}
+a.eval:hover{text-decoration:underline;}
+
+/* Legend */
+.legend{display:flex;gap:14px;margin-bottom:12px;align-items:center;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);}
+.lbar{width:3px;height:13px;border-radius:1px;flex-shrink:0;}
+
+/* Day pills */
+.day-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.dpill{display:inline-flex;align-items:center;font-size:12px;padding:5px 11px;border-radius:99px;border:0.5px solid var(--border);cursor:pointer;background:transparent;color:var(--text2);font-family:var(--font);}
+.dpill.active{background:var(--bg2);color:var(--text);border-color:var(--border2);}
+.dpill-ny.active{background:#FEF0E8;color:#7A2700;border-color:#E35A10;}
+.dpill-lis.active{background:#EEF5EE;color:#004400;border-color:#006600;}
+.dpill-bcn.active{background:#FDF8E6;color:#7A6500;border-color:#C8A800;}
+
+/* Tipping */
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.tip-col{padding:0 12px 0 0;}
+.tip-col:last-child{padding:0 0 0 12px;border-left:0.5px solid var(--border);}
+.tip-head{font-size:11px;font-weight:500;color:var(--text2);padding:4px 0 6px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:5px;}
+.trow{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;}
+.trow+.trow{border-top:0.5px solid var(--border);}
+.tkey{color:var(--text2);}
+
+/* Add day prompt */
+.add-day{margin-top:8px;padding:9px 14px;border:0.5px dashed var(--border);border-radius:var(--radius);font-size:13px;color:var(--text3);text-align:center;cursor:pointer;}
+
+/* Tip footnote */
+.tip-foot{margin-top:6px;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px;padding:0 2px;}
+
+/* Timeline */
+.tl-item{display:flex;align-items:stretch;}
+.tl-item+.tl-item .tl-sbar,.tl-item+.tl-item .tl-body{border-top:0.5px solid var(--border);}
+.tl-sbar{width:3px;flex-shrink:0;}
+.tl-body{display:flex;align-items:flex-start;gap:10px;padding:8px 14px 8px 10px;flex:1;}
+.tl-time{font-size:12px;color:var(--text3);width:52px;flex-shrink:0;padding-top:1px;}
+.tl-title{font-size:13px;font-weight:500;}
+.tl-sub{font-size:12px;color:var(--text2);margin-top:1px;}
+
+#trip-view,#day-view{display:none;}
+#trip-view.active,#day-view.active{display:block;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">Lisbon + Barcelona <span style="color:var(--text3);font-weight:400;">·</span> Jun 29 – Jul 7 <span style="font-size:14px;font-weight:400;color:var(--text3);" id="day-of-trip"></span></div>
+</div>
+
+<div class="nextup">
+  <div class="nextup-bar" id="nextup-bar"></div>
+  <div class="nextup-inner">
+    <div class="nextup-col">
+      <div class="nextup-label"><i class="ti ti-clock" style="font-size:10px;"></i> Next up</div>
+      <div class="nextup-title" id="nextup-title">—</div>
+      <div class="nextup-sub" id="nextup-sub"></div>
+    </div>
+    <div class="nvdiv"></div>
+    <div class="nextup-col" style="padding-left:11px;">
+      <div class="nextup-label"><i class="ti ti-sunrise" style="font-size:10px;"></i> Tomorrow</div>
+      <div class="nextup-title" id="tom-title">—</div>
+      <div class="nextup-sub" id="tom-sub"></div>
+    </div>
+    <div class="nvdiv"></div>
+    <div style="padding-left:11px;flex-shrink:0;text-align:center;">
+      <div class="nextup-countdown" id="cdn">—</div>
+      <div class="nextup-countdown-label">days away</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="sv('trip')"><i class="ti ti-list" style="font-size:14px;"></i> Full trip</button>
+  <button class="tab" onclick="sv('day')"><i class="ti ti-calendar-event" style="font-size:14px;"></i> Daily view</button>
+</div>
+
+<!-- FULL TRIP -->
+<div id="trip-view" class="active">
+
+  <div class="legend">
+    <div class="legend-item"><div class="lbar" style="background:#E35A10;"></div>New York</div>
+    <div class="legend-item"><div class="lbar" style="background:#006600;"></div>Lisbon</div>
+    <div class="legend-item"><div class="lbar" style="background:#C8A800;"></div>Barcelona</div>
+  </div>
+
+  <div class="sec">
+    <div class="slabel">Flights</div>
+    <div class="card">
+      <div class="stripe"><div class="sbar" style="background:#E35A10;"></div><div class="scontent">
+        <div class="crow"><div class="cicon"><i class="ti ti-plane-departure"></i></div><div class="cbody"><div class="ctitle">JFK → LIS</div><div class="csub">Mon Jun 29 · 4:30 PM · Delta · 1 stop CDG · arr 8:50 AM +1</div></div><div class="cmeta">JPWRM7</div></div>
+      </div></div>
+      <hr class="divider">
+      <div class="stripe"><div class="sbar" style="background:#006600;"></div><div class="scontent">
+        <div class="crow"><div class="cicon"><i class="ti ti-plane-departure"></i></div><div class="cbody"><div class="ctitle">LIS → BCN</div><div class="csub" style="color:var(--text3);">Details pending — waiting on Emily</div></div><div class="cmeta" style="color:var(--text3);">TBD</div></div>
+      </div></div>
+      <hr class="divider">
+      <div class="stripe"><div class="sbar" style="background:#C8A800;"></div><div class="scontent">
+        <div class="crow"><div class="cicon"><i class="ti ti-plane-arrival"></i></div><div class="cbody"><div class="ctitle">BCN → JFK</div><div class="csub">Tue Jul 7 · 7:00 PM T1 · Iberia · non-stop · arr 10:00 PM T8 · seats 14C, 14A</div></div><div class="cmeta">IB/KP545</div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="slabel">Hotels</div>
+    <div class="ph-card">
+      <div class="stripe"><div class="sbar" style="background:#006600;"></div><div class="scontent">
+        <div class="crow"><div class="cicon"><i class="ti ti-building" style="color:var(--text3);"></i></div><div class="cbody"><div class="ctitle" style="color:var(--text3);">Lisbon hotel</div><div class="csub" style="color:var(--text3);">Jun 30 – Jul 3 · details pending</div></div></div>
+      </div></div>
+    </div>
+    <div class="card">
+      <div class="stripe"><div class="sbar" style="background:#C8A800;"></div><div class="scontent">
+        <div class="crow"><div class="cicon"><i class="ti ti-building"></i></div><div class="cbody">
+          <div class="ctitle">Hotel Casa Sagnier</div>
+          <div class="csub">Rambla de Catalunya 104, Eixample · Jul 3–7</div>
+          <div class="action-row">
+            <a class="act" href="https://maps.google.com/?q=Rambla+de+Catalunya+104+Barcelona" target="_blank"><i class="ti ti-map-pin"></i> Maps</a>
+            <a class="act" href="tel:+34935959545"><i class="ti ti-phone"></i> +34 935 95 95 45</a>
+          </div>
+        </div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="slabel">Activities</div>
+    <div class="card">
+      <div class="stripe"><div class="sbar" style="background:#C8A800;"></div><div class="scontent">
+        <div class="crow"><div class="cicon"><i class="ti ti-building-arch"></i></div><div class="cbody">
+          <div class="ctitle">Sagrada Família</div>
+          <div class="csub">Jul 7 · 1:15 PM · Carrer de Mallorca 401</div>
+          <div class="action-row">
+            <a class="act" href="https://maps.google.com/?q=Sagrada+Familia+Barcelona" target="_blank"><i class="ti ti-map-pin"></i> Maps</a>
+            <a class="act" href="https://sagradafamilia.org/home" target="_blank"><i class="ti ti-external-link"></i> Website</a>
+            <a class="act" href="tel:+34932080414"><i class="ti ti-phone"></i> Call</a>
+          </div>
+          <div class="tip-foot"><i class="ti ti-coin" style="font-size:11px;"></i> Tip: not expected at attractions · tour guides €2–5 if exceptional</div>
+        </div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="slabel">Tipping</div>
+    <div class="card card-pad">
+      <div class="tip-grid">
+        <div class="tip-col">
+          <div class="tip-head"><span style="display:inline-block;width:8px;height:8px;background:#EEF5EE;border-radius:2px;border:0.5px solid #006600;"></span>Lisbon</div>
+          <div class="trow"><span class="tkey">Restaurants</span><span>Round up · 5–10%</span></div>
+          <div class="trow"><span class="tkey">Cafés / bars</span><span>Round up</span></div>
+          <div class="trow"><span class="tkey">Taxis</span><span>Round up</span></div>
+          <div class="trow"><span class="tkey">Hotels</span><span>€1–2/night</span></div>
+        </div>
+        <div class="tip-col">
+          <div class="tip-head"><span style="display:inline-block;width:8px;height:8px;background:#FDF8E6;border-radius:2px;border:0.5px solid #C8A800;"></span>Barcelona</div>
+          <div class="trow"><span class="tkey">Restaurants</span><span>Round up · 5–10%</span></div>
+          <div class="trow"><span class="tkey">Cafés / bars</span><span>Round up</span></div>
+          <div class="trow"><span class="tkey">Taxis</span><span>Round up</span></div>
+          <div class="trow"><span class="tkey">Hotels</span><span>€1–2/night</span></div>
+        </div>
+      </div>
+      <div style="margin-top:8px;padding-top:8px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3);">Tipping appreciated but never obligatory in either country.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="slabel">Important info</div>
+    <div class="card card-pad">
+      <div class="irow"><span class="ikey">Return flight conf</span><span class="ival">IB/KP545 · #2933351</span></div>
+      <div class="irow"><span class="ikey">Outbound conf</span><span class="ival">JPWRM7</span></div>
+      <div class="irow"><span class="ikey">Hotel Casa Sagnier</span><span><a class="act" style="font-size:12px;" href="tel:+34935959545">+34 935 95 95 45</a></span></div>
+      <div class="irow"><span class="ikey">Sagrada Família</span><span><a class="act" style="font-size:12px;" href="tel:+34932080414">+34 932 08 04 14</a></span></div>
+      <div class="irow"><span class="ikey">Time zone</span><span style="font-size:12px;">Lisbon +5h · Barcelona +6h (ET)</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="slabel">Emergency</div>
+    <div class="card card-pad">
+      <div class="erow"><span class="ekey"><i class="ti ti-phone-call"></i> Europe emergency</span><a class="eval" href="tel:112">112</a></div>
+      <div class="erow"><span class="ekey"><i class="ti ti-building-bank"></i> US Embassy Lisbon</span><a class="eval" href="tel:+351218727330">+351 21 872 7330</a></div>
+      <div class="erow"><span class="ekey"><i class="ti ti-building-bank"></i> US Embassy Madrid</span><a class="eval" href="tel:+34915872200">+34 91 587 2200</a></div>
+      <div class="erow"><span class="ekey"><i class="ti ti-shield"></i> Portugal police</span><a class="eval" href="tel:+351213421634">+351 21 342 1634</a></div>
+      <div class="erow"><span class="ekey"><i class="ti ti-shield"></i> Spain police (tourist)</span><a class="eval" href="tel:+34932903000">+34 93 290 3000</a></div>
+      <div style="margin-top:8px;padding-top:8px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text3);">All numbers tappable. Screenshot this section before you leave.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DAILY VIEW -->
+<div id="day-view">
+  <div class="legend" style="margin-bottom:10px;">
+    <div class="legend-item"><div class="lbar" style="background:#E35A10;"></div>New York</div>
+    <div class="legend-item"><div class="lbar" style="background:#006600;"></div>Lisbon</div>
+    <div class="legend-item"><div class="lbar" style="background:#C8A800;"></div>Barcelona</div>
+  </div>
+  <div class="day-pills" id="dpills"></div>
+  <div id="dcontent"></div>
+</div>
+
+<script>
+const C={ny:'#E35A10',lis:'#006600',bcn:'#C8A800','':'transparent'};
+const CP={ny:'dpill-ny',lis:'dpill-lis',bcn:'dpill-bcn'};
+
+const tripDays=['2026-06-29','2026-06-30','2026-07-01','2026-07-02','2026-07-03','2026-07-04','2026-07-05','2026-07-06','2026-07-07'];
+
+const events=[
+  {date:'2026-06-29',time:'16:30',title:'Depart JFK → LIS',sub:'Delta · conf JPWRM7',city:'ny'},
+  {date:'2026-06-30',time:'08:50',title:'Arrive Lisbon',sub:'Hotel check-in after',city:'lis'},
+  {date:'2026-07-03',time:'12:00',title:'Fly LIS → BCN',sub:'Details TBD',city:'lis'},
+  {date:'2026-07-03',time:'15:00',title:'Check in — Casa Sagnier',sub:'Rambla de Catalunya 104',city:'bcn'},
+  {date:'2026-07-07',time:'13:15',title:'Sagrada Família',sub:'Carrer de Mallorca 401',city:'bcn'},
+  {date:'2026-07-07',time:'16:00',title:'Head to BCN airport',sub:'T1 departure',city:'bcn'},
+  {date:'2026-07-07',time:'19:00',title:'Depart BCN → JFK',sub:'Iberia · seats 14C, 14A',city:'bcn'},
+  {date:'2026-07-07',time:'22:00',title:'Arrive JFK T8',sub:'',city:'ny'},
+];
+
+const tomorrowFirst=[
+  {date:'2026-06-28',title:'Depart JFK 4:30 PM',sub:'Leave by 1 PM'},
+  {date:'2026-06-29',title:'Arrive Lisbon 8:50 AM',sub:'Hotel check-in after'},
+  {date:'2026-06-30',title:'Free day in Lisbon',sub:'No plans yet'},
+  {date:'2026-07-01',title:'Free day in Lisbon',sub:'No plans yet'},
+  {date:'2026-07-02',title:'Fly LIS → BCN · Check in Casa Sagnier',sub:'Details TBD'},
+  {date:'2026-07-03',title:'Free day in Barcelona',sub:'No plans yet'},
+  {date:'2026-07-04',title:'Free day in Barcelona',sub:'No plans yet'},
+  {date:'2026-07-05',title:'Free day in Barcelona',sub:'No plans yet'},
+  {date:'2026-07-06',title:'Sagrada Família 1:15 PM · Fly home 7 PM',sub:'Check out, store luggage'},
+];
+
+function initNextUp(){
+  const now=new Date();
+  const dep=new Date('2026-06-29');
+  const end=new Date('2026-07-07');
+  const daysAway=Math.ceil((dep-now)/(1000*60*60*24));
+  document.getElementById('cdn').textContent=daysAway>0?daysAway:0;
+
+  const todayStr=now.toISOString().slice(0,10);
+  const dayIdx=tripDays.indexOf(todayStr);
+  const dayEl=document.getElementById('day-of-trip');
+  if(dayIdx>=0) dayEl.textContent=`(day ${dayIdx+1} of 8)`;
+  else if(now>end) dayEl.textContent='(trip complete)';
+
+  const next=events.find(e=>new Date(e.date+'T'+e.time+':00')>now);
+  if(next){
+    document.getElementById('nextup-bar').style.background=C[next.city]||'transparent';
+    document.getElementById('nextup-title').textContent=next.title;
+    const dt=new Date(next.date+'T'+next.time+':00');
+    const ds=dt.toLocaleDateString([],{month:'short',day:'numeric'});
+    const ts=dt.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+    document.getElementById('nextup-sub').textContent=`${ds} · ${ts}${next.sub?' · '+next.sub:''}`;
+  } else {
+    document.getElementById('nextup-title').textContent='Trip complete';
+  }
+
+  const tom=tomorrowFirst.find(t=>t.date===todayStr);
+  if(tom){
+    document.getElementById('tom-title').textContent=tom.title;
+    document.getElementById('tom-sub').textContent=tom.sub;
+  } else if(daysAway>1){
+    document.getElementById('tom-title').textContent=`T-${daysAway-1} until departure`;
+  } else {
+    document.getElementById('tom-title').textContent='—';
+  }
+}
+initNextUp();
+
+function sv(v){
+  ['trip','day'].forEach(x=>document.getElementById(x+'-view').classList.toggle('active',x===v));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.tab[onclick="sv('${v}')"]`).classList.add('active');
+}
+
+const days=[
+  {label:'Jun 29',city:'ny',title:'Departure',items:[
+    {time:'By 1 PM',title:'Leave for JFK',sub:'3 hrs early · international check-in',city:'ny'},
+    {time:'4:30 PM',title:'Depart JFK → LIS',sub:'Delta · 1 stop CDG · conf JPWRM7',city:'ny'},
+    {time:'CDG',title:'Layover Paris',sub:'1h 15m connection',city:''},
+  ]},
+  {label:'Jun 30',city:'lis',title:'Arrive Lisbon',items:[
+    {time:'8:50 AM',title:'Arrive Lisbon',sub:'Hotel check-in after',city:'lis'},
+    {time:'TBD',title:'Lisbon hotel check-in',sub:'Details pending',city:'lis'},
+  ]},
+  {label:'Jul 1',city:'lis',title:'Lisbon',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Lisbon is yours',city:'lis'}]},
+  {label:'Jul 2',city:'lis',title:'Lisbon',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Lisbon is yours',city:'lis'}]},
+  {label:'Jul 3',city:'bcn',title:'Fly to Barcelona',items:[
+    {time:'TBD',title:'Depart LIS → BCN',sub:'Details pending',city:'lis'},
+    {time:'Afternoon',title:'Check in — Hotel Casa Sagnier',sub:'Rambla de Catalunya 104',city:'bcn'},
+  ]},
+  {label:'Jul 4',city:'bcn',title:'Barcelona',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Barcelona is yours',city:'bcn'}]},
+  {label:'Jul 5',city:'bcn',title:'Barcelona',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Barcelona is yours',city:'bcn'}]},
+  {label:'Jul 6',city:'bcn',title:'Barcelona',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Barcelona is yours',city:'bcn'}]},
+  {label:'Jul 7',city:'bcn',title:'Last day + fly home',items:[
+    {time:'1:15 PM',title:'Sagrada Família',sub:'Carrer de Mallorca 401 · pre-booked',city:'bcn'},
+    {time:'~4 PM',title:'Head to BCN airport',sub:'T1 · allow time from hotel with luggage',city:'bcn'},
+    {time:'7:00 PM',title:'Depart BCN → JFK',sub:'Iberia 2627 · non-stop · seats 14C, 14A',city:'bcn'},
+    {time:'10:00 PM',title:'Arrive JFK T8',sub:'',city:'ny'},
+  ]},
+];
+
+const pillsEl=document.getElementById('dpills');
+const contentEl=document.getElementById('dcontent');
+
+days.forEach((d,i)=>{
+  const btn=document.createElement('button');
+  btn.className='dpill '+(CP[d.city]||'')+(i===0?' active':'');
+  btn.textContent=d.label;
+  btn.onclick=()=>{
+    document.querySelectorAll('.dpill').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    renderDay(i);
+  };
+  pillsEl.appendChild(btn);
+});
+
+const tipNote={lis:'Tip: round up or 5–10% · not obligatory',bcn:'Tip: round up or 5–10% · not obligatory'};
+
+function renderDay(i){
+  const d=days[i];
+  let html=`<div class="slabel" style="margin-bottom:8px;">${d.label} — ${d.title}</div><div class="card">`;
+  d.items.forEach((item,idx)=>{
+    const bar=C[item.city]||'transparent';
+    const top=idx>0?'border-top:0.5px solid var(--border);':'';
+    html+=`<div style="display:flex;align-items:stretch;${top}">
+      <div style="width:3px;flex-shrink:0;background:${bar};"></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 14px 8px 10px;flex:1;">
+        <div style="font-size:12px;color:var(--text3);width:52px;flex-shrink:0;padding-top:1px;">${item.time}</div>
+        <div><div style="font-size:13px;font-weight:500;">${item.title}</div>${item.sub?`<div style="font-size:12px;color:var(--text2);margin-top:1px;">${item.sub}</div>`:''}</div>
+      </div></div>`;
+  });
+  html+=`</div>`;
+  if(d.tip){
+    const city=d.city==='lis'?'lis':'bcn';
+    html+=`<div class="tip-foot"><i class="ti ti-coin" style="font-size:11px;"></i>${tipNote[city]}</div>`;
+  }
+  html+=`<div class="add-day" onclick="alert('Open Claude and ask: Suggest things to do on ${d.label} in ${d.city==='lis'?'Lisbon':'Barcelona'}')"><i class="ti ti-plus"></i> Fill in this day</div>`;
+  contentEl.innerHTML=html;
+}
+
+renderDay(0);
+</script>
+</body>
+</html>
