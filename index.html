@@ -187,7 +187,7 @@ a.eval:hover{text-decoration:underline;}
       </div></div>
       <hr class="divider">
       <div class="stripe"><div class="sbar" style="background:#006600;"></div><div class="scontent">
-        <div class="crow"><div class="cicon"><i class="ti ti-plane-departure"></i></div><div class="cbody"><div class="ctitle">LIS → BCN</div><div class="csub" style="color:var(--text3);">Details pending — waiting on Emily</div></div><div class="cmeta" style="color:var(--text3);">TBD</div></div>
+        <div class="crow"><div class="cicon"><i class="ti ti-plane-departure"></i></div><div class="cbody"><div class="ctitle">LIS → BCN</div><div class="csub">Fri Jul 3 · 11:05 AM · TAP Portugal 1032 · 1h 55m · arr 2:00 PM</div></div><div class="cmeta">X29XUZ</div></div>
       </div></div>
       <hr class="divider">
       <div class="stripe"><div class="sbar" style="background:#C8A800;"></div><div class="scontent">
@@ -303,7 +303,8 @@ const tripDays=['2026-06-29','2026-06-30','2026-07-01','2026-07-02','2026-07-03'
 const events=[
   {date:'2026-06-29',time:'16:30',title:'Depart JFK → LIS',sub:'Delta · conf JPWRM7',city:'ny'},
   {date:'2026-06-30',time:'08:50',title:'Arrive Lisbon',sub:'Hotel check-in after',city:'lis'},
-  {date:'2026-07-03',time:'12:00',title:'Fly LIS → BCN',sub:'Details TBD',city:'lis'},
+  {date:'2026-07-03',time:'11:05',title:'Depart LIS → BCN',sub:'TAP Portugal 1032 · conf X29XUZ',city:'lis'},
+  {date:'2026-07-03',time:'14:00',title:'Arrive Barcelona',sub:'BCN · then hotel check-in',city:'bcn'},
   {date:'2026-07-03',time:'15:00',title:'Check in — Casa Sagnier',sub:'Rambla de Catalunya 104',city:'bcn'},
   {date:'2026-07-07',time:'13:15',title:'Sagrada Família',sub:'Carrer de Mallorca 401',city:'bcn'},
   {date:'2026-07-07',time:'16:00',title:'Head to BCN airport',sub:'T1 departure',city:'bcn'},
@@ -316,7 +317,7 @@ const tomorrowFirst=[
   {date:'2026-06-29',title:'Arrive Lisbon 8:50 AM',sub:'Hotel check-in after'},
   {date:'2026-06-30',title:'Free day in Lisbon',sub:'No plans yet'},
   {date:'2026-07-01',title:'Free day in Lisbon',sub:'No plans yet'},
-  {date:'2026-07-02',title:'Fly LIS → BCN · Check in Casa Sagnier',sub:'Details TBD'},
+  {date:'2026-07-02',title:'Fly LIS → BCN 11:05 AM · Check in Casa Sagnier',sub:'TAP Portugal 1032 · conf X29XUZ'},
   {date:'2026-07-03',title:'Free day in Barcelona',sub:'No plans yet'},
   {date:'2026-07-04',title:'Free day in Barcelona',sub:'No plans yet'},
   {date:'2026-07-05',title:'Free day in Barcelona',sub:'No plans yet'},
@@ -379,7 +380,8 @@ const days=[
   {label:'Jul 1',city:'lis',title:'Lisbon',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Lisbon is yours',city:'lis'}]},
   {label:'Jul 2',city:'lis',title:'Lisbon',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Lisbon is yours',city:'lis'}]},
   {label:'Jul 3',city:'bcn',title:'Fly to Barcelona',items:[
-    {time:'TBD',title:'Depart LIS → BCN',sub:'Details pending',city:'lis'},
+    {time:'11:05 AM',title:'Depart LIS → BCN',sub:'TAP Portugal 1032 · conf X29XUZ',city:'lis'},
+    {time:'2:00 PM',title:'Arrive Barcelona BCN',sub:'',city:'bcn'},
     {time:'Afternoon',title:'Check in — Hotel Casa Sagnier',sub:'Rambla de Catalunya 104',city:'bcn'},
   ]},
   {label:'Jul 4',city:'bcn',title:'Barcelona',tip:true,items:[{time:'All day',title:'No plans yet',sub:'Barcelona is yours',city:'bcn'}]},
