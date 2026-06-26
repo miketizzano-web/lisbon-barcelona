@@ -1,0 +1,346 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+*{box-sizing:border-box;margin:0;padding:0}
+.pb{font-family:var(--font-sans);max-width:480px;margin:0 auto;padding:0 0 1rem}
+.langrow{display:flex;gap:8px;margin:1rem 0 .85rem}
+.langbtn{flex:1;padding:10px;border-radius:var(--border-radius-lg);border:1.5px solid var(--color-border-secondary);background:transparent;cursor:pointer;font-size:15px;font-weight:500;color:var(--color-text-secondary);transition:all .15s}
+.langbtn.on-pt{background:#006600;color:#fff;border-color:#006600}
+.langbtn.on-es{background:#c8a200;color:#3d2e00;border-color:#c8a200}
+.essentials{border-radius:var(--border-radius-lg);padding:.55rem .7rem;margin-bottom:.6rem}
+.ess-pt{background:#e7f2e7;border:0.5px solid #b9d9b9}
+.ess-es{background:#fbf2cf;border:0.5px solid #ecd98a}
+.ess-label{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.ess-pt .ess-label{color:#005200}.ess-es .ess-label{color:#7a5800}
+.ess-grid{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+.chip{flex:0 0 auto;background:var(--color-background-primary);border-radius:var(--border-radius-md);padding:5px 10px;cursor:pointer;min-width:max-content}
+.chip .en{font-size:9px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.04em}
+.chip .na{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.empanel{border-radius:var(--border-radius-lg);border:0.5px solid #b9cfe8;background:#eaf1f9;margin-bottom:.9rem;overflow:hidden}
+.emhead{display:flex;align-items:center;justify-content:space-between;padding:.6rem .75rem;cursor:pointer;user-select:none}
+.emhead .lbl{font-size:13px;font-weight:500;color:#0c447c;display:flex;align-items:center;gap:7px}
+.emhead .lbl i{font-size:17px}
+.emhead .rt{display:flex;align-items:center;gap:7px;font-size:11px;color:#5a7ba3}
+.emhead .chev{transition:transform .2s}
+.emhead .chev.open{transform:rotate(180deg)}
+.embody{padding:0 .7rem .7rem;display:flex;flex-wrap:wrap;gap:6px}
+.emchip{background:var(--color-background-primary);border:0.5px solid #cddef1;border-radius:var(--border-radius-md);padding:6px 10px;cursor:pointer}
+.emchip .en{font-size:9px;text-transform:uppercase;letter-spacing:.04em;color:#5a7ba3}
+.emchip .na{font-size:13px;font-weight:500;color:#0c2f54;margin-top:1px}
+.pills{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:.85rem;-webkit-overflow-scrolling:touch}
+.pill{flex:0 0 auto;padding:7px 13px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);background:transparent;cursor:pointer;font-size:13px;font-weight:500;color:var(--color-text-secondary);white-space:nowrap;display:flex;align-items:center;gap:5px;transition:all .15s}
+.pill.on-pt{background:#006600;color:#fff;border-color:#006600}
+.pill.on-es{background:#c8a200;color:#3d2e00;border-color:#c8a200}
+.pill i{font-size:15px}
+.count{font-size:11px;color:var(--color-text-tertiary);margin:-.3rem 0 .6rem;text-align:right}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.65rem .8rem;display:flex;gap:9px;align-items:flex-start;cursor:pointer;transition:border-color .15s}
+.card.full{grid-column:1/-1}
+.card:active{border-color:var(--color-border-primary)}
+.stripe{width:4px;border-radius:2px;flex-shrink:0;align-self:stretch;min-height:30px}
+.s-pt{background:#006600}.s-es{background:#c8a200}
+.cb{flex:1;min-width:0}
+.na{font-size:15px;font-weight:500;color:var(--color-text-primary);line-height:1.3}
+.pr{font-size:11px;color:var(--color-text-tertiary);font-style:italic;margin-top:2px}
+.en{font-size:13px;color:var(--color-text-secondary);margin-top:3px;line-height:1.3}
+.spk{flex-shrink:0;color:var(--color-text-tertiary);font-size:14px;margin-top:1px}
+.numwrap{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.num{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 4px;text-align:center;cursor:pointer}
+.num .d{font-size:16px;font-weight:500;color:var(--color-text-primary)}
+.num .w{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.num .np{font-size:9px;color:var(--color-text-tertiary);font-style:italic}
+.fglabel{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin:.85rem 0 .4rem}
+.fglabel:first-child{margin-top:0}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px}
+.ftile{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.5rem .6rem;cursor:pointer}
+.ftile .fe{font-size:10px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.03em}
+.ftile .fn{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-top:1px}
+.ftile .fp{font-size:10px;color:var(--color-text-tertiary);font-style:italic;margin-top:1px}
+.gcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.7rem .85rem;display:flex;gap:11px;align-items:flex-start;margin-bottom:7px}
+.gicon{font-size:20px;color:var(--color-text-secondary);flex-shrink:0;margin-top:1px}
+.gt{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.gd{font-size:13px;color:var(--color-text-secondary);margin-top:3px;line-height:1.45}
+</style>
+<h2 class="sr-only">Travel phrasebook for Lisbon (Portuguese) and Barcelona (Spanish)</h2>
+<div class="pb">
+  <div class="langrow">
+    <button class="langbtn" id="lb-pt" onclick="setLang('pt')">🇵🇹 Lisbon</button>
+    <button class="langbtn" id="lb-es" onclick="setLang('es')">🇪🇸 Barcelona</button>
+  </div>
+  <div class="essentials" id="ess"></div>
+  <div class="empanel">
+    <div class="emhead" onclick="toggleEm()">
+      <span class="lbl"><i class="ti ti-alert-triangle" aria-hidden="true"></i>Emergency</span>
+      <span class="rt"><span id="emhint">tap to open</span><i class="ti ti-chevron-down chev" id="emchev" aria-hidden="true"></i></span>
+    </div>
+    <div class="embody" id="embody" style="display:none"></div>
+  </div>
+  <div class="pills" id="pills"></div>
+  <div class="count" id="count"></div>
+  <div id="content"></div>
+</div>
+<script>
+const D={
+pt:{
+ Greetings:[
+  {n:"Bom dia",p:"bom JEE-ah",e:"Good morning"},
+  {n:"Boa tarde",p:"BOH-ah TAR-deh",e:"Good afternoon"},
+  {n:"Boa noite",p:"BOH-ah NOY-teh",e:"Good evening / night"},
+  {n:"Olá",p:"oh-LAH",e:"Hello"},
+  {n:"Sim / Não",p:"seeng / nowng",e:"Yes / No"},
+  {n:"Está bem",p:"esh-TAH bayng",e:"Okay / that's fine"},
+  {n:"Percebi",p:"per-seh-BEE",e:"Got it / I understand"},
+  {n:"Está tudo bem",p:"esh-TAH TOO-doo bayng",e:"We're all set"},
+  {n:"Ótimo / Perfeito!",p:"OH-tee-moo / per-FAY-too",e:"Great / perfect!"},
+  {n:"Fala inglês?",p:"FAH-lah een-GLESH",e:"Do you speak English?"},
+  {n:"Desculpe, não percebo português",p:"desh-KOOL-peh, nowng per-SEH-boo por-too-GESH",e:"Sorry, I don't understand Portuguese"},
+  {n:"Obrigado / Obrigada",p:"oh-bree-GAH-doo / -dah",e:"Thank you (male / female speaker)"},
+  {n:"Muito obrigado",p:"MOOY-too oh-bree-GAH-doo",e:"Thank you so much"},
+  {n:"Obrigado por tudo",p:"oh-bree-GAH-doo por TOO-doo",e:"Thanks for everything"},
+  {n:"Não, obrigado",p:"nowng, oh-bree-GAH-doo",e:"No, thank you"},
+  {n:"Com licença",p:"kom lee-SEN-sah",e:"Excuse me (getting by)"},
+  {n:"Desculpe, senhor / senhora",p:"desh-KOOL-peh, sen-YOR / sen-YOH-rah",e:"Excuse me, sir / ma'am (to get attention)"},
+  {n:"Pode ajudar-me, por favor?",p:"POH-deh ah-zhoo-DAR-meh, por fah-VOR",e:"Could you help me, please?"},
+  {n:"Estamos de visita de Nova Iorque",p:"esh-TAH-moosh deh vee-ZEE-tah deh NOH-vah YOR-keh",e:"We're visiting from New York"}
+ ],
+ Dining:[
+  {n:"Temos uma reserva para três em nome de…",p:"TEH-moosh OO-mah reh-ZEHR-vah PAH-rah traysh aym NOH-meh deh",e:"We have a reservation for three under…"},
+  {n:"Uma mesa para três, por favor",p:"OO-mah MEH-zah PAH-rah traysh, por fah-VOR",e:"A table for three, please"},
+  {n:"Podemos sentar-nos aqui / lá fora / ao balcão?",p:"poo-DEH-moosh sen-TAR-noosh ah-KEE / lah FOH-rah / ow bal-KOWNG",e:"Could we sit here / outside / at the bar?"},
+  {n:"Podemos sentar-nos só para bebidas?",p:"poo-DEH-moosh sen-TAR-noosh saw PAH-rah beh-BEE-dash",e:"Could we sit just for drinks?"},
+  {n:"A ementa, por favor",p:"ah eh-MEN-tah, por fah-VOR",e:"The menu, please"},
+  {n:"Queríamos…",p:"keh-REE-ah-moosh",e:"We would like…"},
+  {n:"Quero o mesmo que ela / ele",p:"KEH-roo oo MEZH-moo keh EH-lah / EH-leh",e:"Same as her / him"},
+  {n:"Têm…?",p:"tayng",e:"Do you have…?"},
+  {n:"Sou alérgica a amendoim",p:"soh ah-LEHR-zhee-kah ah ah-men-doo-EENG",e:"Allergic to peanuts (female speaker)"},
+  {n:"Sou alérgica a framboesa",p:"soh ah-LEHR-zhee-kah ah fram-BWEH-zah",e:"Allergic to raspberry (female speaker)"},
+  {n:"Tem frutos secos?",p:"tayng FROO-toosh SEH-koosh",e:"Does it have nuts?"},
+  {n:"Pode ser sem glúten?",p:"POH-deh sehr saym GLOO-tehn",e:"Can it be gluten-free?"},
+  {n:"Saúde!",p:"sah-OO-deh",e:"Cheers!"},
+  {n:"A conta, por favor",p:"ah KON-tah, por fah-VOR",e:"The check, please"},
+  {n:"É tudo, obrigado",p:"eh TOO-doo, oh-bree-GAH-doo",e:"That will be all"},
+  {n:"Está delicioso!",p:"esh-TAH deh-lee-SYOO-zoo",e:"It's delicious!"}
+ ],
+ Food:{
+  "Proteins":[
+   {n:"frango",p:"FRAN-goo",e:"chicken"},{n:"carne",p:"KAR-neh",e:"meat"},{n:"porco",p:"POR-koo",e:"pork"},{n:"peixe",p:"PAY-sheh",e:"fish"},{n:"borrego",p:"boo-REH-goo",e:"lamb"}
+  ],
+  "Staples":[
+   {n:"pão",p:"powng",e:"bread"},{n:"arroz",p:"ah-ROSH",e:"rice"},{n:"batata",p:"bah-TAH-tah",e:"potato"},{n:"salada",p:"sah-LAH-dah",e:"salad"},{n:"sopa",p:"SOH-pah",e:"soup"},{n:"queijo",p:"KAY-zhoo",e:"cheese"},{n:"ovo",p:"OH-voo",e:"egg"},{n:"sandes",p:"SAN-desh",e:"sandwich"},{n:"molho",p:"MOL-yoo",e:"sauce"}
+  ],
+  "Drinks & table":[
+   {n:"água",p:"AH-gwah",e:"water"},{n:"sem gás / com gás",p:"saym gash / kom gash",e:"still / sparkling"},{n:"vinho tinto / branco",p:"VEEN-yoo TEEN-too / BRAN-koo",e:"red / white wine"},{n:"cerveja",p:"ser-VEH-zhah",e:"beer"},{n:"café",p:"kah-FEH",e:"coffee"},{n:"garrafa",p:"gah-RAH-fah",e:"bottle"},{n:"copo",p:"KOH-poo",e:"glass"}
+  ],
+  "Useful words":[
+   {n:"com / sem",p:"kom / saym",e:"with / without"},{n:"quente / frio",p:"KEN-teh / FREE-oo",e:"hot / cold"},{n:"mais / menos",p:"mysh / MEH-noosh",e:"more / less"},{n:"um pouco",p:"oong POH-koo",e:"a little"}
+  ]
+ },
+ Navigation:[
+  {n:"Onde fica…?",p:"ON-deh FEE-kah",e:"Where is…?"},
+  {n:"Onde é a casa de banho?",p:"ON-deh eh ah KAH-zah deh BAHN-yoo",e:"Where is the restroom?"},
+  {n:"Como chego a…?",p:"KOH-moo SHEH-goo ah",e:"How do I get to…?"},
+  {n:"É longe?",p:"eh LON-zheh",e:"Is it far?"},
+  {n:"À esquerda / À direita / Em frente",p:"ah esh-KEHR-dah / ah dee-RAY-tah / aym FREN-teh",e:"Left / Right / Straight ahead"},
+  {n:"Estamos perdidos. Onde estamos?",p:"esh-TAH-moosh per-DEE-doosh. ON-deh esh-TAH-moosh",e:"We're lost. Where are we?"},
+  {n:"É este o caminho para…?",p:"eh ESH-teh oo kah-MEEN-yoo PAH-rah",e:"Is this the right way to…?"},
+  {n:"Quanto custa o bilhete de metro?",p:"KWAN-too KOOS-tah oo bee-LYEH-teh deh MEH-troo",e:"How much is a metro ticket?"},
+  {n:"Comboio / Autocarro / Táxi / Ferry",p:"kom-BOY-oo / ow-toh-KAH-roo / TAK-see / FEH-ree",e:"Train / Bus / Taxi / Ferry"},
+  {n:"Pode levar-nos a…?",p:"POH-deh leh-VAR-noosh ah",e:"Could you take us to…? (taxi)"}
+ ],
+ Shopping:[
+  {n:"Quanto custa?",p:"KWAN-too KOOS-tah",e:"How much is it?"},
+  {n:"Têm…?",p:"tayng",e:"Do you have…?"},
+  {n:"Só estou a ver, obrigado",p:"saw esh-TOH ah vehr, oh-bree-GAH-doo",e:"Just looking, thanks"},
+  {n:"Levo este",p:"LEH-voo ESH-teh",e:"I'll take it"},
+  {n:"Um saco, por favor?",p:"oong SAH-koo, por fah-VOR",e:"A bag, please?"},
+  {n:"Posso pagar?",p:"POH-soo pah-GAR",e:"May I pay?"},
+  {n:"Aceitam cartão de crédito?",p:"ah-SAY-tahng kar-TOWNG deh KREH-dee-too",e:"Do you accept credit cards?"}
+ ],
+ Hotel:[
+  {n:"Temos uma reserva em nome de…",p:"TEH-moosh OO-mah reh-ZEHR-vah aym NOH-meh deh",e:"We have a reservation under…"},
+  {n:"Tem Wi-Fi?",p:"tayng wee-fee",e:"Is there Wi-Fi?"},
+  {n:"Podemos ter mais toalhas?",p:"poo-DEH-moosh tehr mysh too-AHL-yash",e:"More towels, please?"},
+  {n:"Onde posso lavar a roupa?",p:"ON-deh POH-soo lah-VAR ah ROH-pah",e:"Where can I do laundry?"},
+  {n:"A que horas é o check-out?",p:"ah keh OH-rash eh oo check-out",e:"What time is check-out?"},
+  {n:"Podemos fazer check-out mais tarde?",p:"poo-DEH-moosh fah-ZEHR check-out mysh TAR-deh",e:"Could we have a late check-out?"},
+  {n:"O ar condicionado não funciona",p:"oo ar kon-dee-syoo-NAH-doo nowng foon-SYOH-nah",e:"The air conditioning isn't working"}
+ ],
+ "Time":[
+  {n:"Que horas são?",p:"keh OH-rash sowng",e:"What time is it?"},
+  {n:"A que horas?",p:"ah keh OH-rash",e:"At what time?"},
+  {n:"Agora / Mais tarde",p:"ah-GOH-rah / mysh TAR-deh",e:"Now / Later"},
+  {n:"Aberto / Fechado?",p:"ah-BEHR-too / feh-SHAH-doo",e:"Open / Closed?"}
+ ],
+ Emergency:[
+  {n:"Socorro!",p:"soo-KOH-roo",e:"Help!"},
+  {n:"Chamem a polícia!",p:"SHA-mayng ah poo-LEE-syah",e:"Call the police!"},
+  {n:"Chamem uma ambulância!",p:"SHA-mayng OO-mah am-boo-LAN-syah",e:"Call an ambulance!"},
+  {n:"Preciso de um médico",p:"preh-SEE-zoo deh oong MEH-dee-koo",e:"I need a doctor"},
+  {n:"Estou doente",p:"esh-TOH doo-EN-teh",e:"I'm sick"},
+  {n:"Estou ferido",p:"esh-TOH feh-REE-doo",e:"I'm injured"},
+  {n:"Ela está a ter uma reação alérgica",p:"EH-lah esh-TAH ah tehr OO-mah ree-ah-SOWNG ah-LEHR-zhee-kah",e:"She's having an allergic reaction"},
+  {n:"Estou perdido",p:"esh-TOH per-DEE-doo",e:"I'm lost"},
+  {n:"Perdi o meu amigo",p:"per-DEE oo MEH-oo ah-MEE-goo",e:"I've lost my friend"},
+  {n:"Sou americano e preciso de contactar a embaixada",p:"soh ah-meh-ree-KAH-noo ee preh-SEE-zoo deh kon-tak-TAR ah em-by-SHAH-dah",e:"I'm American, I need the Embassy"}
+ ]
+},
+es:{
+ Greetings:[
+  {n:"Buenos días",p:"BWEH-nos DEE-as",e:"Good morning"},
+  {n:"Buenas tardes",p:"BWEH-nas TAR-des",e:"Good afternoon"},
+  {n:"Buenas noches",p:"BWEH-nas NO-ches",e:"Good evening / night"},
+  {n:"Hola",p:"OH-lah",e:"Hello"},
+  {n:"Sí / No",p:"see / no",e:"Yes / No"},
+  {n:"Vale",p:"BAH-leh",e:"Okay / that's fine"},
+  {n:"Entiendo",p:"en-TYEN-doh",e:"Got it / I understand"},
+  {n:"Está todo bien",p:"es-TAH TOH-doh byen",e:"We're all set"},
+  {n:"Genial / Perfecto!",p:"heh-NYAL / per-FEK-toh",e:"Great / perfect!"},
+  {n:"¿Habla inglés?",p:"AH-blah een-GLES",e:"Do you speak English?"},
+  {n:"Perdón, no entiendo español",p:"pehr-DON, no en-TYEN-doh es-pah-NYOL",e:"Sorry, I don't understand Spanish"},
+  {n:"Gracias",p:"GRAH-syas",e:"Thank you (male / female speaker)"},
+  {n:"Muchas gracias",p:"MOO-chas GRAH-syas",e:"Thank you so much"},
+  {n:"Gracias por todo",p:"GRAH-syas por TOH-doh",e:"Thanks for everything"},
+  {n:"No, gracias",p:"no, GRAH-syas",e:"No, thank you"},
+  {n:"Con permiso",p:"kon pehr-MEE-soh",e:"Excuse me (getting by)"},
+  {n:"Disculpe, señor / señora",p:"dees-KOOL-peh, seh-NYOR / seh-NYOH-rah",e:"Excuse me, sir / ma'am (to get attention)"},
+  {n:"¿Puede ayudarme, por favor?",p:"PWEH-deh ah-yoo-DAR-meh, por fah-VOR",e:"Could you help me, please?"},
+  {n:"Estamos de visita desde Nueva York",p:"es-TAH-mos deh vee-SEE-tah DES-deh NWEH-bah york",e:"We're visiting from New York"}
+ ],
+ Dining:[
+  {n:"Tenemos una reserva para tres a nombre de…",p:"teh-NEH-mos OO-nah reh-SEHR-bah PAH-rah tres ah NOM-breh deh",e:"We have a reservation for three under…"},
+  {n:"Una mesa para tres, por favor",p:"OO-nah MEH-sah PAH-rah tres, por fah-VOR",e:"A table for three, please"},
+  {n:"¿Podemos sentarnos aquí / fuera / en la barra?",p:"poh-DEH-mos sen-TAR-nos ah-KEE / FWEH-rah / en lah BAH-rah",e:"Could we sit here / outside / at the bar?"},
+  {n:"¿Podemos sentarnos solo para tomar algo?",p:"poh-DEH-mos sen-TAR-nos SOH-loh PAH-rah toh-MAR AL-goh",e:"Could we sit just for drinks?"},
+  {n:"La carta, por favor",p:"lah KAR-tah, por fah-VOR",e:"The menu, please"},
+  {n:"Queríamos…",p:"keh-REE-ah-mos",e:"We would like…"},
+  {n:"Lo mismo que ella / él",p:"loh MEES-moh keh EH-yah / el",e:"Same as her / him"},
+  {n:"¿Tienen…?",p:"TYEH-nen",e:"Do you have…?"},
+  {n:"Soy alérgica a los cacahuetes",p:"soy ah-LEHR-hee-kah ah los kah-kah-WEH-tes",e:"Allergic to peanuts (female speaker)"},
+  {n:"Soy alérgica a la frambuesa",p:"soy ah-LEHR-hee-kah ah lah fram-BWEH-sah",e:"Allergic to raspberry (female speaker)"},
+  {n:"¿Lleva frutos secos?",p:"YEH-bah FROO-tos SEH-kos",e:"Does it have nuts?"},
+  {n:"¿Puede ser sin gluten?",p:"PWEH-deh sehr sin GLOO-ten",e:"Can it be gluten-free?"},
+  {n:"¡Salud!",p:"sah-LOOD",e:"Cheers!"},
+  {n:"La cuenta, por favor",p:"lah KWEN-tah, por fah-VOR",e:"The check, please"},
+  {n:"Eso es todo, gracias",p:"EH-soh es TOH-doh, GRAH-syas",e:"That will be all"},
+  {n:"¡Está delicioso!",p:"es-TAH deh-lee-SYOH-soh",e:"It's delicious!"}
+ ],
+ Food:{
+  "Proteins":[
+   {n:"pollo",p:"POH-yoh",e:"chicken"},{n:"carne",p:"KAR-neh",e:"meat"},{n:"cerdo",p:"SEHR-doh",e:"pork"},{n:"pescado",p:"pes-KAH-doh",e:"fish"},{n:"cordero",p:"kor-DEH-roh",e:"lamb"}
+  ],
+  "Staples":[
+   {n:"pan",p:"pan",e:"bread"},{n:"arroz",p:"ah-ROHTH",e:"rice"},{n:"patata",p:"pah-TAH-tah",e:"potato"},{n:"ensalada",p:"en-sah-LAH-dah",e:"salad"},{n:"sopa",p:"SOH-pah",e:"soup"},{n:"queso",p:"KEH-soh",e:"cheese"},{n:"huevo",p:"WEH-boh",e:"egg"},{n:"bocadillo",p:"boh-kah-DEE-yoh",e:"sandwich"},{n:"salsa",p:"SAL-sah",e:"sauce"}
+  ],
+  "Drinks & table":[
+   {n:"agua",p:"AH-gwah",e:"water"},{n:"sin gas / con gas",p:"sin gas / kon gas",e:"still / sparkling"},{n:"vino tinto / blanco",p:"VEE-noh TEEN-toh / BLAN-koh",e:"red / white wine"},{n:"cerveza",p:"ser-VEH-thah",e:"beer"},{n:"café",p:"kah-FEH",e:"coffee"},{n:"botella",p:"boh-TEH-yah",e:"bottle"},{n:"vaso",p:"BAH-soh",e:"glass"}
+  ],
+  "Useful words":[
+   {n:"con / sin",p:"kon / sin",e:"with / without"},{n:"caliente / frío",p:"kah-LYEN-teh / FREE-oh",e:"hot / cold"},{n:"más / menos",p:"mas / MEH-nos",e:"more / less"},{n:"un poco",p:"oon POH-koh",e:"a little"}
+  ]
+ },
+ Navigation:[
+  {n:"¿Dónde está…?",p:"DON-deh es-TAH",e:"Where is…?"},
+  {n:"¿Dónde está el baño?",p:"DON-deh es-TAH el BAH-nyoh",e:"Where is the restroom?"},
+  {n:"¿Cómo llego a…?",p:"KOH-moh YEH-goh ah",e:"How do I get to…?"},
+  {n:"¿Está lejos?",p:"es-TAH LEH-hos",e:"Is it far?"},
+  {n:"A la izquierda / A la derecha / Recto",p:"ah lah ees-KYEHR-dah / deh-REH-chah / REK-toh",e:"Left / Right / Straight ahead"},
+  {n:"Estamos perdidos. ¿Dónde estamos?",p:"es-TAH-mos per-DEE-dos. DON-deh es-TAH-mos",e:"We're lost. Where are we?"},
+  {n:"¿Es este el camino a…?",p:"es ES-teh el kah-MEE-noh ah",e:"Is this the right way to…?"},
+  {n:"¿Cuánto cuesta un billete de metro?",p:"KWAN-toh KWES-tah oon bee-YEH-teh deh MEH-troh",e:"How much is a metro ticket?"},
+  {n:"Tren / Autobús / Taxi / Ferry",p:"tren / ow-toh-BOOS / TAK-see / FEH-ree",e:"Train / Bus / Taxi / Ferry"},
+  {n:"¿Puede llevarnos a…?",p:"PWEH-deh yeh-BAR-nos ah",e:"Could you take us to…? (taxi)"}
+ ],
+ Shopping:[
+  {n:"¿Cuánto cuesta?",p:"KWAN-toh KWES-tah",e:"How much is it?"},
+  {n:"¿Tienen…?",p:"TYEH-nen",e:"Do you have…?"},
+  {n:"Solo estoy mirando, gracias",p:"SOH-loh es-TOY mee-RAN-doh, GRAH-syas",e:"Just looking, thanks"},
+  {n:"Me lo llevo",p:"meh loh YEH-boh",e:"I'll take it"},
+  {n:"¿Una bolsa, por favor?",p:"OO-nah BOL-sah, por fah-VOR",e:"A bag, please?"},
+  {n:"¿Puedo pagar?",p:"PWEH-doh pah-GAR",e:"May I pay?"},
+  {n:"¿Aceptan tarjeta de crédito?",p:"ah-SEP-tan tar-HEH-tah deh KREH-dee-toh",e:"Do you accept credit cards?"}
+ ],
+ Hotel:[
+  {n:"Tenemos una reserva a nombre de…",p:"teh-NEH-mos OO-nah reh-SEHR-bah ah NOM-breh deh",e:"We have a reservation under…"},
+  {n:"¿Hay Wi-Fi?",p:"eye wee-fee",e:"Is there Wi-Fi?"},
+  {n:"¿Podemos tener más toallas?",p:"poh-DEH-mos teh-NEHR mas toh-AH-yas",e:"More towels, please?"},
+  {n:"¿Dónde puedo lavar la ropa?",p:"DON-deh PWEH-doh lah-BAR lah ROH-pah",e:"Where can I do laundry?"},
+  {n:"¿A qué hora es la salida?",p:"ah keh OH-rah es lah sah-LEE-dah",e:"What time is check-out?"},
+  {n:"¿Podemos hacer la salida más tarde?",p:"poh-DEH-mos ah-SEHR lah sah-LEE-dah mas TAR-deh",e:"Could we have a late check-out?"},
+  {n:"El aire acondicionado no funciona",p:"el AY-reh ah-kon-dee-syoh-NAH-doh no foon-SYOH-nah",e:"The air conditioning isn't working"}
+ ],
+ "Time":[
+  {n:"¿Qué hora es?",p:"keh OH-rah es",e:"What time is it?"},
+  {n:"¿A qué hora?",p:"ah keh OH-rah",e:"At what time?"},
+  {n:"Ahora / Más tarde",p:"ah-OH-rah / mas TAR-deh",e:"Now / Later"},
+  {n:"¿Abierto / Cerrado?",p:"ah-BYEHR-toh / seh-RAH-doh",e:"Open / Closed?"}
+ ],
+ Emergency:[
+  {n:"¡Socorro!",p:"soh-KOH-roh",e:"Help!"},
+  {n:"¡Llamen a la policía!",p:"YAH-men ah lah poh-lee-SEE-ah",e:"Call the police!"},
+  {n:"¡Llamen una ambulancia!",p:"YAH-men OO-nah am-boo-LAN-syah",e:"Call an ambulance!"},
+  {n:"Necesito un médico",p:"neh-seh-SEE-toh oon MEH-dee-koh",e:"I need a doctor"},
+  {n:"Estoy enfermo",p:"es-TOY en-FEHR-moh",e:"I'm sick"},
+  {n:"Estoy herido",p:"es-TOY eh-REE-doh",e:"I'm injured"},
+  {n:"Está teniendo una reacción alérgica",p:"es-TAH teh-NYEN-doh OO-nah reh-ak-SYON ah-LEHR-hee-kah",e:"She's having an allergic reaction"},
+  {n:"Estoy perdido",p:"es-TOY per-DEE-doh",e:"I'm lost"},
+  {n:"He perdido a mi amigo",p:"eh per-DEE-doh ah mee ah-MEE-goh",e:"I've lost my friend"},
+  {n:"Soy estadounidense y necesito la embajada",p:"soy es-tah-doh-oo-nee-DEN-seh ee neh-seh-SEE-toh lah em-bah-HAH-dah",e:"I'm American, I need the Embassy"}
+ ]
+}};
+const NUMS={pt:["um|oong","dois|doysh","três|traysh","quatro|KWA-troo","cinco|SEEN-koo","seis|saysh","sete|SEH-teh","oito|OY-too","nove|NOH-veh","dez|desh"],
+es:["uno|OO-noh","dos|dos","tres|tres","cuatro|KWA-troh","cinco|SEEN-koh","seis|says","siete|SYEH-teh","ocho|OH-choh","nueve|NWEH-beh","diez|dyes"]};
+const FOODG=["Proteins","Staples","Drinks & table","Useful words"];
+const GEST=[
+ {i:"ti-number-1",t:"Counting starts on the thumb",d:"For \"one,\" hold up your thumb — not your index finger. An index finger held up reads as \"two\" to locals. Matters when ordering or paying."},
+ {i:"ti-hand-stop",t:"\"No\" with a chin lift",d:"You'll see locals tip the chin up with a small tongue click to mean \"no.\" You don't have to use it, but recognizing it helps."},
+ {i:"ti-heart",t:"Thank with a hand on the heart",d:"Saying obrigado / gracias with your palm briefly on your chest reads as warm and sincere. Universally appreciated."},
+ {i:"ti-arrow-down",t:"\"Come here\" — palm down",d:"Beckon with your palm facing DOWN, fingers sweeping toward you. The American palm-up curl reads as rude or worse here."},
+ {i:"ti-eye",t:"Catching a server — eye + raised hand",d:"Make eye contact and lift a hand slightly. Never snap your fingers or call out — both read as rude, especially in Portugal."},
+ {i:"ti-hand-off",t:"\"Just looking\" wave-off",d:"At markets and with street vendors, an open palm and a small side-to-side wave politely says \"no thanks\" without a word."},
+ {i:"ti-wave-saw-tool",t:"\"So-so\" hand wobble",d:"Flat hand, wobble side to side for \"more or less\" — mais ou menos / más o menos. Handy when words run out."}
+];
+const CATS=[
+ {k:"Greetings",i:"ti-hand-stop"},{k:"Dining",i:"ti-tools-kitchen-2"},{k:"Food",i:"ti-bread"},{k:"Navigation",i:"ti-map-pin"},
+ {k:"Shopping",i:"ti-shopping-bag"},{k:"Hotel",i:"ti-bed"},{k:"Time",i:"ti-clock"},
+ {k:"Numbers",i:"ti-number-9"},{k:"Gestures",i:"ti-hand-finger"}
+];
+const ESS={pt:[["Thanks","Obrigado"],["Excuse me","Desculpe"],["English?","Fala inglês?"],["The check","A conta, por favor"],["Help!","Socorro!"]],
+es:[["Thanks","Gracias"],["Excuse me","Perdone"],["English?","¿Habla inglés?"],["The check","La cuenta, por favor"],["Help!","¡Socorro!"]]};
+let lang="pt",cat="Greetings",emOpen=false;
+function clean(t){return t.replace(/\([^)]*\)/g,"").replace(/\[[^\]]*\]/g,"").replace(/…|\.\.\./g,"").trim();}
+function esc(s){return s.replace(/\\/g,"\\\\").replace(/'/g,"\\'");}
+function speak(native){
+ if(!window.speechSynthesis)return;window.speechSynthesis.cancel();
+ clean(native).split("/").map(s=>s.trim()).filter(Boolean).forEach(part=>{
+  const u=new SpeechSynthesisUtterance(part);u.lang=lang==="pt"?"pt-PT":"es-ES";u.rate=.85;window.speechSynthesis.speak(u);});
+}
+function isHalf(c){return c.e.length<=22;}
+function setLang(l){lang=l;render();}
+function toggleEm(){emOpen=!emOpen;renderEm();}
+function renderEm(){
+ const body=document.getElementById("embody"),chev=document.getElementById("emchev"),hint=document.getElementById("emhint");
+ if(emOpen){
+  body.style.display="flex";chev.classList.add("open");hint.textContent="tap to close";
+  body.innerHTML=D[lang].Emergency.map(c=>`<div class="emchip" onclick="speak('${esc(c.n)}')"><div class="en">${c.e}</div><div class="na">${c.n}</div></div>`).join("");
+ }else{body.style.display="none";chev.classList.remove("open");hint.textContent="tap to open";}
+}
+function render(){
+ const isPt=lang==="pt";
+ document.getElementById("lb-pt").className="langbtn"+(isPt?" on-pt":"");
+ document.getElementById("lb-es").className="langbtn"+(!isPt?" on-es":"");
+ const ess=document.getElementById("ess");
+ ess.className="essentials "+(isPt?"ess-pt":"ess-es");
+ ess.innerHTML='<div class="ess-label"><i class="ti ti-star" aria-hidden="true"></i>Essentials</div><div class="ess-grid">'+ESS[lang].map(e=>`<div class="chip" onclick="speak('${esc(e[1])}')"><div class="en">${e[0]}</div><div class="na">${e[1]}</div></div>`).join("")+'</div>';
+ renderEm();
+ document.getElementById("pills").innerHTML=CATS.map(c=>`<button class="pill${cat===c.k?(isPt?" on-pt":" on-es"):""}" onclick="setCat('${c.k}')"><i class="ti ${c.i}" aria-hidden="true"></i>${c.k}</button>`).join("");
+ const ct=document.getElementById("count"),content=document.getElementById("content"),s=isPt?"s-pt":"s-es";
+ if(cat==="Gestures"){ct.textContent="";content.innerHTML=GEST.map(g=>`<div class="gcard"><i class="ti ${g.i} gicon" aria-hidden="true"></i><div><div class="gt">${g.t}</div><div class="gd">${g.d}</div></div></div>`).join("");return;}
+ if(cat==="Numbers"){ct.textContent="";content.innerHTML='<div class="numwrap">'+NUMS[lang].map((x,i)=>{const[w,p]=x.split("|");return`<div class="num" onclick="speak('${esc(w)}')"><div class="d">${i+1}</div><div class="w">${w}</div><div class="np">${p}</div></div>`;}).join("")+'</div>';return;}
+ if(cat==="Food"){ct.textContent="";content.innerHTML=FOODG.map(g=>{const items=D[lang].Food[g]||[];return`<div class="fglabel">${g}</div><div class="fgrid">`+items.map(it=>`<div class="ftile" onclick="speak('${esc(it.n)}')"><div class="fe">${it.e}</div><div class="fn">${it.n}</div><div class="fp">${it.p}</div></div>`).join("")+`</div>`;}).join("");return;}
+ const list=D[lang][cat]||[];
+ ct.textContent=list.length+" phrases";
+ content.innerHTML='<div class="grid2">'+list.map(c=>`<div class="card${isHalf(c)?"":" full"}" onclick="speak('${esc(c.n)}')"><div class="stripe ${s}"></div><div class="cb"><div class="na">${c.n}</div><div class="pr">${c.p}</div><div class="en">${c.e}</div></div><i class="ti ti-volume gicon spk" aria-hidden="true"></i></div>`).join("")+"</div>";
+}
+function setCat(c){cat=c;render();}
+render();
+</script>
